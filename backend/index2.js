@@ -8,7 +8,7 @@ const jwt  = require  ("jsonwebtoken")
 const cookieParser = require ("cookie-parser")
 const Trans = require("./model/Alldata.js")
 const Withdraw = require ("./model/withdrawModel.js")
-
+const path = require ('path')
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -40,14 +40,14 @@ dotenv.config({ path: './.env' });
 */
 app.use(express.json());
 
-
+/*
 app.use(cors( {
     origin: [ " http://localhost:3000" ],
     methods:  [ "GET", "POST"],
     credentials: true
 }));
 
-app.use(express.json())
+*/
 app.use(cookieParser())
 /*
 async function connectDB () {
@@ -191,8 +191,12 @@ app.get("/gettrans", (req, res) => {
    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
  })
 
-
-
+/*
+const __dirname = path.dirname("");
+const buildpath = path.join (_dirname, "../client/build")
+app.use(express.static(buildpath));
+app.use(cors({"origin" : "*"}));
+*/
  mongoose.connect(process.env.MONGO_URI)
  .then( () => {
      app.listen(process.env.PORT, () => {
