@@ -19,10 +19,8 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
        
-        runs:
-          using: 'node20'
-          main: 'main.js'
-          with:
+        
+        with:
             node-version: '20.x'  
       - name: npm start, build, and test
         run: |
@@ -51,9 +49,7 @@ jobs:
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
-        runs:
-          using: 'node20'
-          main: 'main.js'
+      
         with:
           name: node-app
 
