@@ -22,7 +22,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-
+        runs:
+          using: 'node20'
+          main: 'main.js'
+          
       - name: npm start, build, and test
         run: |
           npm start
